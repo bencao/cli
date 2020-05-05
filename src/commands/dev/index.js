@@ -133,7 +133,7 @@ function initializeProxy(port, distDir, projectDir) {
     if (!isEmpty(pathHeaderRules)) {
       Object.entries(pathHeaderRules).forEach(([key, val]) => res.setHeader(key, val))
     }
-    res.writeHead(req.proxyOptions.status || proxyRes.statusCode, proxyRes.headers)
+    res.writeHead(proxyRes.statusCode, proxyRes.headers)
     proxyRes.on('data', function(data) {
       res.write(data)
     })
